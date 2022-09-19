@@ -14,7 +14,7 @@ export const AddArticle: React.FC <Props> = ({ saveArticle }) => {
         })
     }
 
-    const addNewArticle = (e: React.FocusEvent) => {
+    const addNewArticle = (e: React.SyntheticEvent) => {
         e.preventDefault()
         saveArticle(article)
     }

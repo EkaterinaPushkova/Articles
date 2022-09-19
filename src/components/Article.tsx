@@ -12,7 +12,7 @@ export const Article: React.FC<Props> = ({article, deleteArticle}) => {
 
     const delArticle = React.useCallback(
         (article: IArticle) => 
-        dispatchEvent(deleteArticle(article)), 
+        dispatch(deleteArticle(article)), 
         [dispatch, deleteArticle]
         )
 
