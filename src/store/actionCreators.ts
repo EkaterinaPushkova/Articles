@@ -1,27 +1,27 @@
-import * as actionTypes from './actionTypes'
+import { ArticleAction, IArticle } from "../redux/mainPage/types";
+import { TDispatch } from "../redux/redux.types";
+import { ADD_ARTICLE, DELETE_ARTICLE } from "./actionTypes";
 
+export const fakeHTTPrequest = (action: ArticleAction) => {
+  return (dispatch: TDispatch) => {
+    setTimeout(() => {
+      dispatch(action);
+    }, 500);
+  };
+};
 
-export function fakeHTTPrequest(action: ArticleAction)  {
-    return (dispatch: DispatchType) => {
-        setTimeout(() => {
-            dispatch(action)
-        }, 500)
-    }
-}
+export const addArticle = (article: IArticle) => {
+  const action: ArticleAction = {
+    type: ADD_ARTICLE,
+    article,
+  };
+  return fakeHTTPrequest(action);
+};
 
-export function addArticle (article: IArticle) {
-    const action: ArticleAction = {
-        type: actionTypes.ADD_ARTICLE,
-        article,
-    }
-    return fakeHTTPrequest(action)
-}
-
-export function deleteArticle (article: IArticle) {
-    const action: ArticleAction = {
-        type: actionTypes.DELETE_ARTICLE,
-        article,
-    }
-    return fakeHTTPrequest(action)
-}
-
+export const deleteArticle = (article: IArticle) => {
+  const action: ArticleAction = {
+    type: DELETE_ARTICLE,
+    article,
+  };
+  return fakeHTTPrequest(action);
+};
