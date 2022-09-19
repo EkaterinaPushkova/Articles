@@ -20,7 +20,7 @@ export const AddArticle: React.FC <Props> = ({ saveArticle }) => {
     }
 
     return (
-        <form onSubmit={addNewArticle} className="ADD-article">
+        <form onSubmit={addNewArticle} className="Add-article">
             <input 
                 type='text'
                 id='title'
