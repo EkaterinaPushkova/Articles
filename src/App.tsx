@@ -1,35 +1,15 @@
-import React from 'react';
-import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import './styles.css'
+import { Provider } from "react-redux";
 
-import { Article } from './components/Article';
-import { AddArticle } from './components/AddArticle';
-import { addArticle, deleteArticle } from './store/actionCreators';
-import { Dispatch } from 'redux'
+import MainPage from "./pages/MainPage";
+import store from "./redux";
+import "./styles/global.css";
 
-const App: React.FC = () => {
-  const articles: readonly IArticle[] = useSelector(
-    (state: ArticleState) => state.articles, shallowEqual
-  )
-  const dispatch: Dispatch<any> = useDispatch()
-
-  const saveArticle = React.useCallback(
-    (article: IArticle) => dispatch(addArticle(article)), 
-    [dispatch]
-  )
+const App = () => {
   return (
-    <main>
-      <h1>Articles</h1>
-      <AddArticle saveArticle={saveArticle}/>
-      {articles.map((article: IArticle) => (
-        <Article 
-          key={article.id}
-          article={article}
-          deleteArticle={deleteArticle}
-          />
-      ))}
-    </main>
-  )
-}
+    <Provider store={store}>
+      <MainPage />
+    </Provider>
+  );
+};
 
 export default App;
